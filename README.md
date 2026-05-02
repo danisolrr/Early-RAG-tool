@@ -1,8 +1,36 @@
 # Local PDF RAG
 
-A small local Retrieval-Augmented Generation (RAG) app for asking questions about PDF files.
+## Local PDF RAG System
 
-The project reads PDFs from `data/pdfs`, extracts their text, splits the text into searchable chunks, stores those chunks in ChromaDB, retrieves the most relevant chunks for a question, and sends that context to a local Ollama model for answer generation.
+An end-to-end Retrieval-Augmented Generation (RAG) system for querying scientific PDFs using locally deployed LLMs. The goal is to serve as a quick way to identify important information amongst large sets of .pdf files, for instance, amongst technical or scientifical databases.
+
+- Fully local pipeline (no external APIs)
+- Semantic retrieval over embedded document chunks
+- Grounded answer generation with source attribution
+- Built with modular components for ingestion, retrieval, and generation
+
+Tech: Python, ChromaDB, Sentence Transformers, Ollama, Streamlit
+
+## Demo
+
+![RAG Demo](assets/demo.png)
+
+Example query showing grounded answer generation with source attribution.
+
+## Workflow Overview
+
+```text
+PDF files
+ -> extract page text
+ -> clean and chunk text
+ -> embed chunks
+ -> store chunks in ChromaDB
+ -> embed user question
+ -> retrieve matching chunks
+ -> send context to Ollama
+ -> show answer and sources in Streamlit
+```
+
 
 ## What This App Does
 
@@ -21,20 +49,6 @@ Everything is designed to run locally:
 - Vector search uses ChromaDB
 - Answer generation uses Ollama
 - The UI uses Streamlit
-
-## Workflow Overview
-
-```text
-PDF files
- -> extract page text
- -> clean and chunk text
- -> embed chunks
- -> store chunks in ChromaDB
- -> embed user question
- -> retrieve matching chunks
- -> send context to Ollama
- -> show answer and sources in Streamlit
-```
 
 ## Project Structure
 
@@ -56,6 +70,9 @@ app/
 data/
   pdfs/                 Put your local PDF files here, not committed by default
   chroma/               ChromaDB persistence directory, generated locally
+
+assets/
+  RAGexample.py         Example of app working     
 
 requirements.txt        Python dependencies
 ```

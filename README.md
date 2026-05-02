@@ -13,7 +13,7 @@ Tech: Python, ChromaDB, Sentence Transformers, Ollama, Streamlit
 
 ## Demo
 
-![RAG Demo](assets/demo.png)
+![RAG Demo](assets/RAGexample.jpg)
 
 Example query showing grounded answer generation with source attribution.
 
